@@ -1,0 +1,795 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-CN">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="路由协议是路由器之间交互信息的一种语言，路由器之间通过路由协议共享网络状态和网络可达性的一些信息。路由器依靠动态路由协议来传播和收集路由选择信息。路由协议定义了一套路由器与邻接路由器通信时使用的规则。动态计算路由，适应网络变化，找出本地路由器到网络中其他网段的路由。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="动态路由协议基础">
+<meta property="og:url" content="http://www.linuxu.top/2017/03/03/动态路由协议基础/index.html">
+<meta property="og:site_name" content="linuxu's blog">
+<meta property="og:description" content="路由协议是路由器之间交互信息的一种语言，路由器之间通过路由协议共享网络状态和网络可达性的一些信息。路由器依靠动态路由协议来传播和收集路由选择信息。路由协议定义了一套路由器与邻接路由器通信时使用的规则。动态计算路由，适应网络变化，找出本地路由器到网络中其他网段的路由。">
+<meta property="og:image" content="http://7pun1h.com1.z0.glb.clouddn.com/rlc1hnfciqu2f49a0k6wc87duz.png">
+<meta property="og:updated_time" content="2017-03-03T02:04:20.720Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="动态路由协议基础">
+<meta name="twitter:description" content="路由协议是路由器之间交互信息的一种语言，路由器之间通过路由协议共享网络状态和网络可达性的一些信息。路由器依靠动态路由协议来传播和收集路由选择信息。路由协议定义了一套路由器与邻接路由器通信时使用的规则。动态计算路由，适应网络变化，找出本地路由器到网络中其他网段的路由。">
+<meta name="twitter:image" content="http://7pun1h.com1.z0.glb.clouddn.com/rlc1hnfciqu2f49a0k6wc87duz.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"hide"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://www.linuxu.top/2017/03/03/动态路由协议基础/"/>
+
+
+
+
+
+  <title> 动态路由协议基础 | linuxu's blog </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">linuxu's blog</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+    
+      <p class="site-subtitle"></p>
+    
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://www.linuxu.top/2017/03/03/动态路由协议基础/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="徐立宝">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/avatar.gif">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="linuxu's blog">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="linuxu's blog" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                动态路由协议基础
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-03-03T10:02:30+08:00">
+                2017-03-03
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2017/03/03/动态路由协议基础/" class="leancloud_visitors" data-flag-title="动态路由协议基础">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote>
+<p>路由协议是路由器之间交互信息的一种语言，路由器之间通过路由协议共享网络状态和网络可达性的一些信息。路由器依靠动态路由协议来传播和收集路由选择信息。路由协议定义了一套路由器与邻接路由器通信时使用的规则。动态计算路由，适应网络变化，找出本地路由器到网络中其他网段的路由。</p>
+</blockquote>
+<a id="more"></a>
+<h4 id="常见的动态路由协议："><a href="#常见的动态路由协议：" class="headerlink" title="常见的动态路由协议："></a>常见的动态路由协议：</h4><ul>
+<li>RIP：Routing Information Protocol,路由信息协议</li>
+<li>OSPF: Open shortest Path First,开放式最短路径优先</li>
+<li>ISIS: Intermediate System to Intermediate System,中间系统到中间系统</li>
+<li>BGP:Border Gateway Protocol,边界网关协议</li>
+</ul>
+<h4 id="自治系统（Autonomous-System）"><a href="#自治系统（Autonomous-System）" class="headerlink" title="自治系统（Autonomous System）"></a>自治系统（Autonomous System）</h4><p><img src="http://7pun1h.com1.z0.glb.clouddn.com/rlc1hnfciqu2f49a0k6wc87duz.png" alt=""><br>自治系统（AS    ）:由同一个技术管理机构管理，使用统一选路策略的一些路由器的集合。<br>自治系统内部的路由协议—-IGP:RIPv1/v2、OSPF、ISIS<br>自治系统之间的路由协议—-EGP:BGP</p>
+<h4 id="动态路由协议的分类"><a href="#动态路由协议的分类" class="headerlink" title="动态路由协议的分类"></a>动态路由协议的分类</h4><h5 id="使用算法"><a href="#使用算法" class="headerlink" title="使用算法"></a>使用算法</h5><p>距离矢量路由协议</p>
+<ul>
+<li>基于距离矢量算法</li>
+<li>RIPv1/v2、BGP<br>链路状态路由协议</li>
+<li>基于SPF(Shortest Path First)</li>
+<li>OSPF、ISIS<h5 id="目的地址类型"><a href="#目的地址类型" class="headerlink" title="目的地址类型"></a>目的地址类型</h5>单播路由协议（Unicast Routing Protocol）</li>
+<li>目的地址为单播</li>
+<li>RIP、OSPF、ISIS、BGP<br>组播路由协议（Multicast Routing Protocol）</li>
+<li>目的地址为组播</li>
+<li>PIM-SM、PIM-DM</li>
+</ul>
+<h4 id="衡量动态路由协议的一些性能指标"><a href="#衡量动态路由协议的一些性能指标" class="headerlink" title="衡量动态路由协议的一些性能指标"></a>衡量动态路由协议的一些性能指标</h4><ul>
+<li>正确性<br>能够正确找到最优的路由，且无自环。</li>
+<li>快收敛<br>当网络的拓扑发生变化之后，能够迅速在自治系统中作相应的路由改变</li>
+<li>低开销<br>协议自身的开销（内存、cpu、网络带宽）最小</li>
+<li>安全性<br>协议自身不易受攻击，有安全机制。</li>
+<li>普适性<br>适应各种拓扑结构和规模的网络</li>
+</ul>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/02/22/hcna学习-1/" rel="next" title="hcna学习(1)">
+                <i class="fa fa-chevron-left"></i> hcna学习(1)
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/08/06/phoenix通过phoenix-query-server连接hbase/" rel="prev" title="phoenix通过phoenix query server连接hbase">
+                phoenix通过phoenix query server连接hbase <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+          
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="徐立宝" />
+          <p class="site-author-name" itemprop="name">徐立宝</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+        
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#常见的动态路由协议："><span class="nav-number">1.</span> <span class="nav-text">常见的动态路由协议：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#自治系统（Autonomous-System）"><span class="nav-number">2.</span> <span class="nav-text">自治系统（Autonomous System）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#动态路由协议的分类"><span class="nav-number">3.</span> <span class="nav-text">动态路由协议的分类</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#使用算法"><span class="nav-number">3.1.</span> <span class="nav-text">使用算法</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#目的地址类型"><span class="nav-number">3.2.</span> <span class="nav-text">目的地址类型</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#衡量动态路由协议的一些性能指标"><span class="nav-number">4.</span> <span class="nav-text">衡量动态路由协议的一些性能指标</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">徐立宝</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+  
+  
+
+  
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("CzGbMSdtGPoTXKJpNzEsS0Ou-gzGzoHsz", "7JlNx7biktKStJ0mqU7qKBSz");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+
+</body>
+</html>
