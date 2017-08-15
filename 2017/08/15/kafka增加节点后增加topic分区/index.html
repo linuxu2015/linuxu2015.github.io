@@ -71,7 +71,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="hadoop," />
+  <meta name="keywords" content="Hexo, NexT" />
 
 
 
@@ -87,16 +87,16 @@
 
 
 
-<meta name="description" content="phoenix与hive的整合资料:http://phoenix.apache.org/hive_storage_handler.htmlhttps://my.oschina.net/Allenbigdata/blog/783894这两个资料的phoenix都是4.8版本的，而我这里的是4.7版本的，按照这个进行操作均不成功。最后执行了一条">
+<meta name="description" content="添加kafka节点交换机配置1234567enableconfigure terminalinterface port kafka机器光口关闭lacplacp mode off把eth6划分到vlan 233，eth7划分到vlan49保存 write">
 <meta property="og:type" content="article">
-<meta property="og:title" content="phoenix与hbase整合">
-<meta property="og:url" content="http://www.linuxu.top/2017/08/08/phoenix与hbase整合/index.html">
+<meta property="og:title" content="kafka增加节点后增加topic分区">
+<meta property="og:url" content="http://www.linuxu.top/2017/08/15/kafka增加节点后增加topic分区/index.html">
 <meta property="og:site_name" content="linuxu's blog">
-<meta property="og:description" content="phoenix与hive的整合资料:http://phoenix.apache.org/hive_storage_handler.htmlhttps://my.oschina.net/Allenbigdata/blog/783894这两个资料的phoenix都是4.8版本的，而我这里的是4.7版本的，按照这个进行操作均不成功。最后执行了一条">
-<meta property="og:updated_time" content="2017-08-08T07:29:10.974Z">
+<meta property="og:description" content="添加kafka节点交换机配置1234567enableconfigure terminalinterface port kafka机器光口关闭lacplacp mode off把eth6划分到vlan 233，eth7划分到vlan49保存 write">
+<meta property="og:updated_time" content="2017-08-15T07:51:12.281Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="phoenix与hbase整合">
-<meta name="twitter:description" content="phoenix与hive的整合资料:http://phoenix.apache.org/hive_storage_handler.htmlhttps://my.oschina.net/Allenbigdata/blog/783894这两个资料的phoenix都是4.8版本的，而我这里的是4.7版本的，按照这个进行操作均不成功。最后执行了一条">
+<meta name="twitter:title" content="kafka增加节点后增加topic分区">
+<meta name="twitter:description" content="添加kafka节点交换机配置1234567enableconfigure terminalinterface port kafka机器光口关闭lacplacp mode off把eth6划分到vlan 233，eth7划分到vlan49保存 write">
 
 
 
@@ -124,13 +124,13 @@
 
 
 
-  <link rel="canonical" href="http://www.linuxu.top/2017/08/08/phoenix与hbase整合/"/>
+  <link rel="canonical" href="http://www.linuxu.top/2017/08/15/kafka增加节点后增加topic分区/"/>
 
 
 
 
 
-  <title> phoenix与hbase整合 | linuxu's blog </title>
+  <title> kafka增加节点后增加topic分区 | linuxu's blog </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
@@ -247,7 +247,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://www.linuxu.top/2017/08/08/phoenix与hbase整合/">
+  <link itemprop="mainEntityOfPage" href="http://www.linuxu.top/2017/08/15/kafka增加节点后增加topic分区/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="徐立宝">
@@ -271,7 +271,7 @@
             
             
               
-                phoenix与hbase整合
+                kafka增加节点后增加topic分区
               
             
           </h1>
@@ -286,8 +286,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-08T14:35:23+08:00">
-                2017-08-08
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-15T15:50:02+08:00">
+                2017-08-15
               </time>
             
 
@@ -304,7 +304,7 @@
 
           
           
-             <span id="/2017/08/08/phoenix与hbase整合/" class="leancloud_visitors" data-flag-title="phoenix与hbase整合">
+             <span id="/2017/08/15/kafka增加节点后增加topic分区/" class="leancloud_visitors" data-flag-title="kafka增加节点后增加topic分区">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -333,17 +333,22 @@
       
 
       
-        <h2 id="phoenix与hive的整合"><a href="#phoenix与hive的整合" class="headerlink" title="phoenix与hive的整合"></a>phoenix与hive的整合</h2><p>资料:<br><a href="http://phoenix.apache.org/hive_storage_handler.html" target="_blank" rel="external">http://phoenix.apache.org/hive_storage_handler.html</a><br><a href="https://my.oschina.net/Allenbigdata/blog/783894" target="_blank" rel="external">https://my.oschina.net/Allenbigdata/blog/783894</a><br>这两个资料的phoenix都是4.8版本的，而我这里的是4.7版本的，按照这个进行操作均不成功。<br>最后执行了一条<br><a id="more"></a><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ln -sv /usr/hdp/current/phoenix-client/phoenix-client.jar /usr/hdp/current/hive-server2/lib/phoenix-client.jar</div></pre></td></tr></table></figure></p>
-<p>然后再执行建表语句就成功了，无语……研究了一天最后一条命令搞定了，期间各种替换jar，各种改配置文件……<br>建表语句:<br>Create INTERNAL Table<br>For INTERNAL tables, Hive manages the lifecycle of the table and data. When a Hive table is created, a corresponding Phoenix table is also created. Once the Hive table is dropped, the Phoenix table is also deleted.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">create table phoenix_table (</div><div class="line">	  s1 string,</div><div class="line">	  i1 int,</div><div class="line">	  f1 float,</div><div class="line">	  d1 double</div><div class="line">	)</div><div class="line">	STORED BY &apos;org.apache.phoenix.hive.PhoenixStorageHandler&apos;</div><div class="line">	TBLPROPERTIES (</div><div class="line">	  &quot;phoenix.table.name&quot; = &quot;phoenix_table&quot;,</div><div class="line">	  &quot;phoenix.zookeeper.quorum&quot; = &quot;localhost&quot;,</div><div class="line">	  &quot;phoenix.zookeeper.znode.parent&quot; = &quot;/hbase&quot;,</div><div class="line">	  &quot;phoenix.zookeeper.client.port&quot; = &quot;2181&quot;,</div><div class="line">	  &quot;phoenix.rowkeys&quot; = &quot;s1, i1&quot;,</div><div class="line">	  &quot;phoenix.column.mapping&quot; = &quot;s1:s1, i1:i1, f1:f1, d1:d1&quot;,</div><div class="line">	  &quot;phoenix.table.options&quot; = &quot;SALT_BUCKETS=10, DATA_BLOCK_ENCODING=&apos;DIFF&apos;&quot;</div><div class="line">	);</div></pre></td></tr></table></figure></p>
-<p>Create EXTERNAL Table<br>For EXTERNAL tables, Hive works with an existing Phoenix table and manages only Hive metadata. Dropping an EXTERNAL table from Hive deletes only Hive metadata but does not delete the Phoenix table.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">create external table ext_table (</div><div class="line">  i1 int,</div><div class="line">  s1 string,</div><div class="line">  f1 float,</div><div class="line">  d1 decimal</div><div class="line">)</div><div class="line">STORED BY &apos;org.apache.phoenix.hive.PhoenixStorageHandler&apos;</div><div class="line">TBLPROPERTIES (</div><div class="line">  &quot;phoenix.table.name&quot; = &quot;ext_table&quot;,</div><div class="line">  &quot;phoenix.zookeeper.quorum&quot; = &quot;localhost&quot;,</div><div class="line">  &quot;phoenix.zookeeper.znode.parent&quot; = &quot;/hbase&quot;,</div><div class="line">  &quot;phoenix.zookeeper.client.port&quot; = &quot;2181&quot;,</div><div class="line">  &quot;phoenix.rowkeys&quot; = &quot;i1&quot;,</div><div class="line">  &quot;phoenix.column.mapping&quot; = &quot;i1:i1, s1:s1, f1:f1, d1:d1&quot;</div><div class="line">);</div></pre></td></tr></table></figure></p>
-<p>Properties</p>
-<ol>
-<li>phoenix.zookeeper.quorum<br>Specifies the ZooKeeper quorum for HBase<br>Default: localhost</li>
-<li>phoenix.zookeeper.znode.parent<br>Specifies the ZooKeeper parent node for HBase<br>Default: /hbase</li>
-<li>phoenix.zookeeper.client.port<br>Specifies the ZooKeeper port<br>Default: 2181</li>
-<li>phoenix.rowkeys<br>The list of columns to be the primary key in a Phoenix table<br>Required</li>
-<li>phoenix.column.mapping<br>Mappings between column names for Hive and Phoenix. See Limitations for details.</li>
-</ol>
+        <h2 id="添加kafka节点"><a href="#添加kafka节点" class="headerlink" title="添加kafka节点"></a>添加kafka节点</h2><h3 id="交换机配置"><a href="#交换机配置" class="headerlink" title="交换机配置"></a>交换机配置</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">enable</div><div class="line">configure terminal</div><div class="line">interface port kafka机器光口</div><div class="line">关闭lacp</div><div class="line">lacp mode off</div><div class="line">把eth6划分到vlan 233，eth7划分到vlan49</div><div class="line">保存 write</div></pre></td></tr></table></figure>
+<a id="more"></a>
+<h3 id="服务器配置"><a href="#服务器配置" class="headerlink" title="服务器配置"></a>服务器配置</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">删除/etc/sysconfig/network-scripts/ifcfg-bond0</div><div class="line">删除/etc/rc.local文件中bond以及route相关（最后3行）</div><div class="line">重新配置网络，eth6继续沿用233的ip地址，eth7使用申请的公安网的ip地址</div><div class="line">重启机器</div></pre></td></tr></table></figure>
+<h2 id="添加节点后分区"><a href="#添加节点后分区" class="headerlink" title="添加节点后分区"></a>添加节点后分区</h2><p>查看topic分布情况<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">[root@node1 bin]<span class="comment"># ./kafka-topics.sh --zookeeper node2:2181 --topic bj_traffic --describe      </span></div><div class="line">Topic:bj_traffic        PartitionCount:8        ReplicationFactor:2     Configs:</div><div class="line">Topic: bj_traffic       Partition: 0    Leader: 1002    Replicas: 1002,1003     Isr: 1003,1002</div><div class="line">Topic: bj_traffic       Partition: 1    Leader: 1003    Replicas: 1003,1005     Isr: 1005,1003</div><div class="line">Topic: bj_traffic       Partition: 2    Leader: 1005    Replicas: 1005,1001     Isr: 1005,1001</div><div class="line">Topic: bj_traffic       Partition: 3    Leader: 1001    Replicas: 1001,1002     Isr: 1001,1002</div><div class="line">Topic: bj_traffic       Partition: 4    Leader: 1002    Replicas: 1002,1005     Isr: 1002,1005</div><div class="line">Topic: bj_traffic       Partition: 5    Leader: 1003    Replicas: 1003,1001     Isr: 1003,1001</div><div class="line">Topic: bj_traffic       Partition: 6    Leader: 1005    Replicas: 1005,1002     Isr: 1005,1002</div><div class="line">Topic: bj_traffic       Partition: 7    Leader: 1001    Replicas: 1001,1003     Isr: 1003,1001</div></pre></td></tr></table></figure></p>
+<p>以上可知，topic bj_traffic有8个分区，2个副本，四个节点分别为1001，1002，1003，1005<br>重新分布分区<br>使用Kafka自带的kafka-reassign-partitions.sh工具来重新分布分区。该工具有三种使用模式：</p>
+<p>　　1、generate模式，给定需要重新分配的Topic，自动生成reassign plan（并不执行）（可根据自动生成的plan自定义分区分布）<br>　　2、execute模式，根据指定的reassign plan重新分配Partition<br>　　3、verify模式，验证重新分配Partition是否成功</p>
+<p>借助kafka-reassign-partitions.sh工具生成reassign plan，不过我们先得按照要求定义一个文件，里面说明哪些topic需要重新分区，文件内容如下：</p>
+<p>[iteblog@www.iteblog.com ~]$ cat topics-to-move.json<br>{“topics”: [{“topic”: “bg_traffic”}],<br> “version”:1<br>}<br>然后使用kafka-reassign-partitions.sh工具生成reassign plan<br>命令会打出当前分区分布以及reassign之后的分区分布，把生成的新的分区分布保存为一个json文件,执行这个result.json文件</p>
+<p>[root@node1 bin]# ./kafka-reassign-partitions.sh –zookeeper node2:2181 –reassignment-json-file result.json –execute</p>
+<p>Current partition replica assignment</p>
+<p>{“version”:1,”partitions”:[{“topic”:”bj_traffic”,”partition”:4,”replicas”:[1002,1005]},{“topic”:”bj_traffic”,”partition”:3,”replicas”:[1001,1002]},{“topic”:”bj_traffic”,”partition”:5,”replicas”:[1003,1001]},{“topic”:”bj_traffic”,”partition”:6,”replicas”:[1005,1002]},{“topic”:”bj_traffic”,”partition”:7,”replicas”:[1001,1003]},{“topic”:”bj_traffic”,”partition”:1,”replicas”:[1003,1005]},{“topic”:”bj_traffic”,”partition”:0,”replicas”:[1002,1003]},{“topic”:”bj_traffic”,”partition”:2,”replicas”:[1005,1001]}]}</p>
+<p>Save this to use as the –reassignment-json-file option during rollback</p>
+<p>Successfully started reassignment of partitions {“version”:1,”partitions”:[{“topic”:”bj_traffic”,”partition”:6,”replicas”:[1001,1005]},{“topic”:”bj_traffic”,”partition”:2,”replicas”:[1001,1003]},{“topic”:”bj_traffic”,”partition”:7,”replicas”:[1002,1001]},{“topic”:”bj_traffic”,”partition”:3,”replicas”:[1002,1005]},{“topic”:”bj_traffic”,”partition”:1,”replicas”:[1005,1002]},{“topic”:”bj_traffic”,”partition”:0,”replicas”:[1003,1001]},{“topic”:”bj_traffic”,”partition”:4,”replicas”:[1003,1002]},{“topic”:”bj_traffic”,”partition”:5,”replicas”:[1005,1003]}]}</p>
+<h3 id="验证重新分布进度"><a href="#验证重新分布进度" class="headerlink" title="验证重新分布进度"></a>验证重新分布进度</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">[root@node1 bin]# ./kafka-reassign-partitions.sh --zookeeper node2:2181 --reassignment-json-file result.json --verify</div><div class="line">Status of partition reassignment:</div><div class="line">Reassignment of partition [bj_traffic,6] completed successfully</div><div class="line">Reassignment of partition [bj_traffic,2] completed successfully</div><div class="line">Reassignment of partition [bj_traffic,7] completed successfully</div><div class="line">Reassignment of partition [bj_traffic,3] completed successfully</div><div class="line">Reassignment of partition [bj_traffic,1] completed successfully</div><div class="line">Reassignment of partition [bj_traffic,0] completed successfully</div><div class="line">Reassignment of partition [bj_traffic,4] completed successfully</div><div class="line">Reassignment of partition [bj_traffic,5] completed successfully</div></pre></td></tr></table></figure>
+<h2 id="增加已有topic的分区"><a href="#增加已有topic的分区" class="headerlink" title="增加已有topic的分区"></a>增加已有topic的分区</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">[root@node1 bin]# ./kafka-topics.sh --zookeeper node2:2181 --alter --partitions 9 --topic bj_traffic </div><div class="line"></div><div class="line">WARNING: If partitions are increased for a topic that has a key, the partition logic or ordering of the messages will be affected</div><div class="line"></div><div class="line">Adding partitions succeeded!</div><div class="line"></div><div class="line">[root@node1 bin]# ./kafka-topics.sh --zookeeper node2:2181 --topic bj_traffic --describe            </div><div class="line"></div><div class="line">Topic:bj_traffic        PartitionCount:9        ReplicationFactor:2     Configs:</div><div class="line">Topic: bj_traffic       Partition: 0    Leader: 1003    Replicas: 1003,1001     Isr: 1003,1001</div><div class="line">Topic: bj_traffic       Partition: 1    Leader: 1005    Replicas: 1005,1002     Isr: 1005,1002</div><div class="line">Topic: bj_traffic       Partition: 2    Leader: 1001    Replicas: 1001,1003     Isr: 1001,1003</div><div class="line">Topic: bj_traffic       Partition: 3    Leader: 1002    Replicas: 1002,1005     Isr: 1002,1005</div><div class="line">Topic: bj_traffic       Partition: 4    Leader: 1002    Replicas: 1003,1002     Isr: 1002,1003</div><div class="line">Topic: bj_traffic       Partition: 5    Leader: 1003    Replicas: 1005,1003     Isr: 1003,1005</div><div class="line">Topic: bj_traffic       Partition: 6    Leader: 1005    Replicas: 1001,1005     Isr: 1005,1001</div><div class="line">Topic: bj_traffic       Partition: 7    Leader: 1001    Replicas: 1002,1001     Isr: 1001,1002</div><div class="line">Topic: bj_traffic       Partition: 8    Leader: 1003    Replicas: 1003,1005     Isr: 1003,1005</div></pre></td></tr></table></figure>
+<p>从上面的输出可以看出已经有9个分区了</p>
 
       
     </div>
@@ -365,12 +370,6 @@
 
     <footer class="post-footer">
       
-        <div class="post-tags">
-          
-            <a href="/tags/hadoop/" rel="tag"># hadoop</a>
-          
-        </div>
-      
 
       
         
@@ -380,8 +379,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/08/07/ambari-catalog不存在无法启动错误/" rel="next" title="ambari_catalog不存在无法启动错误">
-                <i class="fa fa-chevron-left"></i> ambari_catalog不存在无法启动错误
+              <a href="/2017/08/08/phoenix与hbase整合/" rel="next" title="phoenix与hbase整合">
+                <i class="fa fa-chevron-left"></i> phoenix与hbase整合
               </a>
             
           </div>
@@ -389,10 +388,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/08/15/kafka增加节点后增加topic分区/" rel="prev" title="kafka增加节点后增加topic分区">
-                kafka增加节点后增加topic分区 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -510,7 +505,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#phoenix与hive的整合"><span class="nav-number">1.</span> <span class="nav-text">phoenix与hive的整合</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#添加kafka节点"><span class="nav-number">1.</span> <span class="nav-text">添加kafka节点</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#交换机配置"><span class="nav-number">1.1.</span> <span class="nav-text">交换机配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#服务器配置"><span class="nav-number">1.2.</span> <span class="nav-text">服务器配置</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#添加节点后分区"><span class="nav-number">2.</span> <span class="nav-text">添加节点后分区</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#验证重新分布进度"><span class="nav-number">2.1.</span> <span class="nav-text">验证重新分布进度</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#增加已有topic的分区"><span class="nav-number">3.</span> <span class="nav-text">增加已有topic的分区</span></a></li></ol></div>
             
 
           </div>
