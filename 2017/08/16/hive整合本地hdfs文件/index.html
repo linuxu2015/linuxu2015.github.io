@@ -71,7 +71,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="图片," />
+  <meta name="keywords" content="hadoop," />
 
 
 
@@ -87,18 +87,19 @@
 
 
 
-<meta name="description" content="图片1234fffjjjlllprint f">
+<meta name="description" content="目的hive通过整合本地的hdfs文件，实现通过hive的sql语句查询hdfs文件中的内容
+查看待整合文件结构注意：导入到hive之后之前的文件会被删除">
 <meta property="og:type" content="article">
-<meta property="og:title" content="图片测试">
-<meta property="og:url" content="http://www.linuxu.top/2017/02/18/图片测试/index.html">
+<meta property="og:title" content="hive整合本地hdfs文件">
+<meta property="og:url" content="http://www.linuxu.top/2017/08/16/hive整合本地hdfs文件/index.html">
 <meta property="og:site_name" content="linuxu's blog">
-<meta property="og:description" content="图片1234fffjjjlllprint f">
-<meta property="og:image" content="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1487433036739&di=241e7efa10e7bac6835bff4a01e02f1c&imgtype=0&src=http%3A%2F%2Fimg17.3lian.com%2Fd%2Ffile%2F201702%2F18%2F6731aee9675f2e6fc152717d3ae0cc7b.jpg">
-<meta property="og:updated_time" content="2017-02-18T14:10:20.980Z">
+<meta property="og:description" content="目的hive通过整合本地的hdfs文件，实现通过hive的sql语句查询hdfs文件中的内容
+查看待整合文件结构注意：导入到hive之后之前的文件会被删除">
+<meta property="og:updated_time" content="2017-08-16T03:29:03.395Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="图片测试">
-<meta name="twitter:description" content="图片1234fffjjjlllprint f">
-<meta name="twitter:image" content="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1487433036739&di=241e7efa10e7bac6835bff4a01e02f1c&imgtype=0&src=http%3A%2F%2Fimg17.3lian.com%2Fd%2Ffile%2F201702%2F18%2F6731aee9675f2e6fc152717d3ae0cc7b.jpg">
+<meta name="twitter:title" content="hive整合本地hdfs文件">
+<meta name="twitter:description" content="目的hive通过整合本地的hdfs文件，实现通过hive的sql语句查询hdfs文件中的内容
+查看待整合文件结构注意：导入到hive之后之前的文件会被删除">
 
 
 
@@ -126,13 +127,13 @@
 
 
 
-  <link rel="canonical" href="http://www.linuxu.top/2017/02/18/图片测试/"/>
+  <link rel="canonical" href="http://www.linuxu.top/2017/08/16/hive整合本地hdfs文件/"/>
 
 
 
 
 
-  <title> 图片测试 | linuxu's blog </title>
+  <title> hive整合本地hdfs文件 | linuxu's blog </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
@@ -249,7 +250,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://www.linuxu.top/2017/02/18/图片测试/">
+  <link itemprop="mainEntityOfPage" href="http://www.linuxu.top/2017/08/16/hive整合本地hdfs文件/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="徐立宝">
@@ -273,7 +274,7 @@
             
             
               
-                图片测试
+                hive整合本地hdfs文件
               
             
           </h1>
@@ -288,8 +289,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-02-18T21:02:06+08:00">
-                2017-02-18
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-16T11:28:21+08:00">
+                2017-08-16
               </time>
             
 
@@ -306,7 +307,7 @@
 
           
           
-             <span id="/2017/02/18/图片测试/" class="leancloud_visitors" data-flag-title="图片测试">
+             <span id="/2017/08/16/hive整合本地hdfs文件/" class="leancloud_visitors" data-flag-title="hive整合本地hdfs文件">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -335,8 +336,13 @@
       
 
       
-        <h2 id="图片"><a href="#图片" class="headerlink" title="图片"></a>图片</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">fff</div><div class="line">jjj</div><div class="line">lll</div><div class="line">print f</div></pre></td></tr></table></figure>
-<p><img src="https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1487433036739&amp;di=241e7efa10e7bac6835bff4a01e02f1c&amp;imgtype=0&amp;src=http%3A%2F%2Fimg17.3lian.com%2Fd%2Ffile%2F201702%2F18%2F6731aee9675f2e6fc152717d3ae0cc7b.jpg" alt=""></p>
+        <h3 id="目的"><a href="#目的" class="headerlink" title="目的"></a>目的</h3><p>hive通过整合本地的hdfs文件，实现通过hive的sql语句查询hdfs文件中的内容</p>
+<h3 id="查看待整合文件结构"><a href="#查看待整合文件结构" class="headerlink" title="查看待整合文件结构"></a>查看待整合文件结构</h3><p>注意：<em>导入到hive之后之前的文件会被删除</em><br><a id="more"></a><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">[root@node2 ~]# hadoop dfs -cat   /data/traffic/traffic/oneM/oneM/20121030084631.txt | less</div><div class="line">DEPRECATED: Use of this script to execute hdfs command is deprecated.</div><div class="line">Instead use the hdfs command for it.</div><div class="line"></div><div class="line">Java HotSpot(TM) 64-Bit Server VM warning: ignoring option MaxPermSize=512m; support was removed in 8.0</div><div class="line">Java HotSpot(TM) 64-Bit Server VM warning: ignoring option MaxPermSize=512m; support was removed in 8.0</div><div class="line"></div><div class="line">155481,4,1,20121030090100,116.4536819,39.9185066,21,276,1</div><div class="line">453302,4,1,20121030090103,116.3347778,39.9956779,38,86,1</div><div class="line">194143,4,1,20121030090103,116.3319168,39.9371033,52,262,1</div><div class="line">020844,4,1,20121030090103,116.4533463,39.9221268,21,282,1</div><div class="line">100194,4,0,20121030090103,116.4551239,39.8972321,34,182,1</div><div class="line">214520,4,1,20121030090059,116.5295029,39.8384209,0,236,1</div><div class="line">164586,4,2,20121030090100,116.5062637,40.0107384,0,210,1</div><div class="line">564442,4,1,20121030090101,116.4839020,39.8848534,8,358,1</div></pre></td></tr></table></figure></p>
+<p>可以看出一共有9个字段并且每个字段按照‘,’分隔的，所以创建hive表时要按照这个结构创建</p>
+<h3 id="创建hive表"><a href="#创建hive表" class="headerlink" title="创建hive表"></a>创建hive表</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">create table wyp (a string, b string,c string, d string, e string,f string, g string,h string,i string) ROW FORMAT DELIMITED FIELDS TERMINATED BY &apos;,&apos; STORED AS TEXTFILE;</div></pre></td></tr></table></figure>
+<p>这里的字段分隔也是“,”，这样才能对应起来</p>
+<h3 id="导入数据"><a href="#导入数据" class="headerlink" title="导入数据"></a>导入数据</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">hive&gt; load data inpath &apos;/data/traffic/traffic/oneM/oneM/20121030084631.txt&apos; into table wyp;</div></pre></td></tr></table></figure>
+<h3 id="查看导入后的数据"><a href="#查看导入后的数据" class="headerlink" title="查看导入后的数据"></a>查看导入后的数据</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">hive&gt; select * from wyp limit 10;</div><div class="line">OK</div><div class="line">        NULL    NULL    NULL    NULL    NULL    NULL    NULL    NULL</div><div class="line">174956  4       1       20121030085921  116.2682571     39.8998299      0       0       1</div><div class="line">431090  4       0       20121030085920  116.4019241     39.8995934      2       166     1</div><div class="line">194101  4       1       20121030085921  116.5357971     39.9404030      43      256     1</div><div class="line">101694  4       1       20121030085921  116.4838181     39.9389687      30      358     1</div><div class="line">199294  4       1       20121030085921  116.2634735     39.9229469      19      88      1</div><div class="line">581047  4       0       20121030085917  116.1321182     39.8878632      80      262     1</div><div class="line">492261  4       1       20121030085917  116.2701797     39.8784409      84      350     1</div><div class="line">214266  4       1       20121030085920  116.3471146     39.9179916      0       284     1</div><div class="line">164769  1       1       20121030085921  116.4619980     39.9930725      17      152     1</div><div class="line">Time taken: 1.492 seconds, Fetched: 10 row(s)</div></pre></td></tr></table></figure>
 
       
     </div>
@@ -360,7 +366,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/图片/" rel="tag"># 图片</a>
+            <a href="/tags/hadoop/" rel="tag"># hadoop</a>
           
         </div>
       
@@ -373,8 +379,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/02/17/hexo安装/" rel="next" title="hexo安装">
-                <i class="fa fa-chevron-left"></i> hexo安装
+              <a href="/2017/08/15/kafka增加节点后增加topic分区/" rel="next" title="kafka增加节点后增加topic分区">
+                <i class="fa fa-chevron-left"></i> kafka增加节点后增加topic分区
               </a>
             
           </div>
@@ -382,10 +388,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/02/20/基于nginx的开源监控软件nagios搭建/" rel="prev" title="基于nginx的开源监控软件nagios搭建">
-                基于nginx的开源监控软件nagios搭建 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -503,7 +505,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#图片"><span class="nav-number">1.</span> <span class="nav-text">图片</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#目的"><span class="nav-number">1.</span> <span class="nav-text">目的</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#查看待整合文件结构"><span class="nav-number">2.</span> <span class="nav-text">查看待整合文件结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#创建hive表"><span class="nav-number">3.</span> <span class="nav-text">创建hive表</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#导入数据"><span class="nav-number">4.</span> <span class="nav-text">导入数据</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#查看导入后的数据"><span class="nav-number">5.</span> <span class="nav-text">查看导入后的数据</span></a></li></ol></div>
             
 
           </div>
