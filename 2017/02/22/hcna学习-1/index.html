@@ -87,12 +87,16 @@
 
 
 
-<meta name="description" content="刚开始进行学习hcna的相关知识，做个记录方便后面遇到问题的时候回来查看">
+<meta name="description" content="刚开始进行学习hcna的相关知识，做个记录方便后面遇到问题的时候回来查看
+配置telnet
+拓扑图配置R1的telnet功能，使用R2进行连接测试1234567user-interface vty 04 	authentication-mode aaa	user privilege level 3aaa	local-user admin password cipher huawei	local-">
 <meta property="og:type" content="article">
 <meta property="og:title" content="hcna学习(1)">
 <meta property="og:url" content="http://www.linuxu.top/2017/02/22/hcna学习-1/index.html">
 <meta property="og:site_name" content="linuxu's blog">
-<meta property="og:description" content="刚开始进行学习hcna的相关知识，做个记录方便后面遇到问题的时候回来查看">
+<meta property="og:description" content="刚开始进行学习hcna的相关知识，做个记录方便后面遇到问题的时候回来查看
+配置telnet
+拓扑图配置R1的telnet功能，使用R2进行连接测试1234567user-interface vty 04 	authentication-mode aaa	user privilege level 3aaa	local-user admin password cipher huawei	local-">
 <meta property="og:image" content="http://i.imgur.com/Y9DXOZ1.png">
 <meta property="og:image" content="http://i.imgur.com/d00jZBP.png">
 <meta property="og:image" content="http://i.imgur.com/sxQgmrb.png">
@@ -101,10 +105,12 @@
 <meta property="og:image" content="http://i.imgur.com/W3T1v7s.png">
 <meta property="og:image" content="http://i.imgur.com/UHc4tMJ.png">
 <meta property="og:image" content="http://i.imgur.com/M9f9Jss.png">
-<meta property="og:updated_time" content="2017-02-22T07:06:35.970Z">
+<meta property="og:updated_time" content="2018-03-31T13:19:18.671Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="hcna学习(1)">
-<meta name="twitter:description" content="刚开始进行学习hcna的相关知识，做个记录方便后面遇到问题的时候回来查看">
+<meta name="twitter:description" content="刚开始进行学习hcna的相关知识，做个记录方便后面遇到问题的时候回来查看
+配置telnet
+拓扑图配置R1的telnet功能，使用R2进行连接测试1234567user-interface vty 04 	authentication-mode aaa	user privilege level 3aaa	local-user admin password cipher huawei	local-">
 <meta name="twitter:image" content="http://i.imgur.com/Y9DXOZ1.png">
 
 
@@ -342,8 +348,10 @@
       
 
       
-        <p>刚开始进行学习hcna的相关知识，做个记录方便后面遇到问题的时候回来查看<br><a id="more"></a></p>
-<h4 id="配置telnet"><a href="#配置telnet" class="headerlink" title="配置telnet"></a>配置telnet</h4><p>拓扑图<br><img src="http://i.imgur.com/Y9DXOZ1.png" alt=""><br>配置R1的telnet功能，使用R2进行连接测试<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">user-interface vty 04 </div><div class="line">	authentication-mode aaa</div><div class="line">	user privilege level 3</div><div class="line">aaa</div><div class="line">	local-user admin password cipher huawei</div><div class="line">	local-user admin privilege level 3</div><div class="line">	local-user admin service0type telnet</div></pre></td></tr></table></figure></p>
+        <a id="more"></a>
+<p>刚开始进行学习hcna的相关知识，做个记录方便后面遇到问题的时候回来查看</p>
+<p>配置telnet</p>
+<p>拓扑图<br><img src="http://i.imgur.com/Y9DXOZ1.png" alt=""><br>配置R1的telnet功能，使用R2进行连接测试<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">user-interface vty 04 </div><div class="line">	authentication-mode aaa</div><div class="line">	user privilege level 3</div><div class="line">aaa</div><div class="line">	local-user admin password cipher huawei</div><div class="line">	local-user admin privilege level 3</div><div class="line">	local-user admin service0type telnet</div></pre></td></tr></table></figure></p>
 <h4 id="配置stelnet"><a href="#配置stelnet" class="headerlink" title="配置stelnet"></a>配置stelnet</h4><p>配置R1的stelnet功能，使用R2进行连接测试(stelnet 在系统视图才有)<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">system-view</div><div class="line">rsa local-key-pair create</div><div class="line">display rsa local-ley-pair public</div><div class="line">user-interface vty 04 </div><div class="line">	authentication-mode aaa</div><div class="line">	protocol inbound ssh</div><div class="line">aaa</div><div class="line">	local-user admin privilege level 3</div><div class="line">	local-user admin service-type ssh</div><div class="line">ssh user admin authentication-type password</div><div class="line">stelnet server enable</div><div class="line">display ssh user-information</div><div class="line">display ssh server status</div><div class="line">display ssh server session</div></pre></td></tr></table></figure></p>
 <p>R2进行连接时需要执行<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ssh client first-time enable</div></pre></td></tr></table></figure></p>
 <h4 id="ensp连接真实物理机与vmware虚拟机xp"><a href="#ensp连接真实物理机与vmware虚拟机xp" class="headerlink" title="ensp连接真实物理机与vmware虚拟机xp"></a>ensp连接真实物理机与vmware虚拟机xp</h4><p>拓扑图<br><img src="http://i.imgur.com/d00jZBP.png" alt=""><br>cloud1（vnet8）配置（不用在意虚拟网看后面的ip地址）<br><img src="http://i.imgur.com/sxQgmrb.png" alt=""><br>cloud2（vnet1）配置（不用在意虚拟网看后面的ip地址）<br><img src="http://i.imgur.com/9NJ34yW.png" alt=""><br>修改本地vnet1和vnet8的ip地址<br><img src="http://i.imgur.com/0srRpmC.png" alt=""><br>vnet8配置<br><img src="http://i.imgur.com/W3T1v7s.png" alt=""><br>vnet1配置<br><img src="http://i.imgur.com/UHc4tMJ.png" alt=""><br>现在真机ping路由器192.168.100.1和192.168.80.1都可以通了<br>下面配置虚拟机xp<br>因为cloud1连接到了vnet8,所以虚拟机也需要使用vnet8的虚拟网卡<br>给虚拟机配置上ip地址后，整个网络就可以互相ping通了<br><img src="http://i.imgur.com/M9f9Jss.png" alt=""></p>
@@ -461,7 +469,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">13</span>
+                <span class="site-state-item-count">12</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -472,7 +480,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-count">4</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -507,7 +515,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#配置telnet"><span class="nav-number">1.</span> <span class="nav-text">配置telnet</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#配置stelnet"><span class="nav-number">2.</span> <span class="nav-text">配置stelnet</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#ensp连接真实物理机与vmware虚拟机xp"><span class="nav-number">3.</span> <span class="nav-text">ensp连接真实物理机与vmware虚拟机xp</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#配置stelnet"><span class="nav-number">1.</span> <span class="nav-text">配置stelnet</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#ensp连接真实物理机与vmware虚拟机xp"><span class="nav-number">2.</span> <span class="nav-text">ensp连接真实物理机与vmware虚拟机xp</span></a></li></ol></div>
             
 
           </div>

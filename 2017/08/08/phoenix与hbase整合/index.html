@@ -87,16 +87,16 @@
 
 
 
-<meta name="description" content="phoenix与hive的整合资料:http://phoenix.apache.org/hive_storage_handler.htmlhttps://my.oschina.net/Allenbigdata/blog/783894这两个资料的phoenix都是4.8版本的，而我这里的是4.7版本的，按照这个进行操作均不成功。最后执行了一条">
+<meta name="description" content="phoenix与hive的整合资料:http://phoenix.apache.org/hive_storage_handler.htmlhttps://my.oschina.net/Allenbigdata/blog/783894这两个资料的phoenix都是4.8版本的，而我这里的是4.7版本的，按照这个进行操作均不成功。最后执行了一条:1ln -sv /usr/hdp/current/ph">
 <meta property="og:type" content="article">
 <meta property="og:title" content="phoenix与hbase整合">
 <meta property="og:url" content="http://www.linuxu.top/2017/08/08/phoenix与hbase整合/index.html">
 <meta property="og:site_name" content="linuxu's blog">
-<meta property="og:description" content="phoenix与hive的整合资料:http://phoenix.apache.org/hive_storage_handler.htmlhttps://my.oschina.net/Allenbigdata/blog/783894这两个资料的phoenix都是4.8版本的，而我这里的是4.7版本的，按照这个进行操作均不成功。最后执行了一条">
-<meta property="og:updated_time" content="2017-08-08T07:29:10.974Z">
+<meta property="og:description" content="phoenix与hive的整合资料:http://phoenix.apache.org/hive_storage_handler.htmlhttps://my.oschina.net/Allenbigdata/blog/783894这两个资料的phoenix都是4.8版本的，而我这里的是4.7版本的，按照这个进行操作均不成功。最后执行了一条:1ln -sv /usr/hdp/current/ph">
+<meta property="og:updated_time" content="2018-03-31T13:20:52.377Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="phoenix与hbase整合">
-<meta name="twitter:description" content="phoenix与hive的整合资料:http://phoenix.apache.org/hive_storage_handler.htmlhttps://my.oschina.net/Allenbigdata/blog/783894这两个资料的phoenix都是4.8版本的，而我这里的是4.7版本的，按照这个进行操作均不成功。最后执行了一条">
+<meta name="twitter:description" content="phoenix与hive的整合资料:http://phoenix.apache.org/hive_storage_handler.htmlhttps://my.oschina.net/Allenbigdata/blog/783894这两个资料的phoenix都是4.8版本的，而我这里的是4.7版本的，按照这个进行操作均不成功。最后执行了一条:1ln -sv /usr/hdp/current/ph">
 
 
 
@@ -333,7 +333,8 @@
       
 
       
-        <h2 id="phoenix与hive的整合"><a href="#phoenix与hive的整合" class="headerlink" title="phoenix与hive的整合"></a>phoenix与hive的整合</h2><p>资料:<br><a href="http://phoenix.apache.org/hive_storage_handler.html" target="_blank" rel="external">http://phoenix.apache.org/hive_storage_handler.html</a><br><a href="https://my.oschina.net/Allenbigdata/blog/783894" target="_blank" rel="external">https://my.oschina.net/Allenbigdata/blog/783894</a><br>这两个资料的phoenix都是4.8版本的，而我这里的是4.7版本的，按照这个进行操作均不成功。<br>最后执行了一条<br><a id="more"></a><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ln -sv /usr/hdp/current/phoenix-client/phoenix-client.jar /usr/hdp/current/hive-server2/lib/phoenix-client.jar</div></pre></td></tr></table></figure></p>
+        <a id="more"></a>
+<h2 id="phoenix与hive的整合"><a href="#phoenix与hive的整合" class="headerlink" title="phoenix与hive的整合"></a>phoenix与hive的整合</h2><p>资料:<br><a href="http://phoenix.apache.org/hive_storage_handler.html" target="_blank" rel="external">http://phoenix.apache.org/hive_storage_handler.html</a><br><a href="https://my.oschina.net/Allenbigdata/blog/783894" target="_blank" rel="external">https://my.oschina.net/Allenbigdata/blog/783894</a><br>这两个资料的phoenix都是4.8版本的，而我这里的是4.7版本的，按照这个进行操作均不成功。<br>最后执行了一条:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ln -sv /usr/hdp/current/phoenix-client/phoenix-client.jar /usr/hdp/current/hive-server2/lib/phoenix-client.jar</div></pre></td></tr></table></figure></p>
 <p>然后再执行建表语句就成功了，无语……研究了一天最后一条命令搞定了，期间各种替换jar，各种改配置文件……<br>建表语句:<br>Create INTERNAL Table<br>For INTERNAL tables, Hive manages the lifecycle of the table and data. When a Hive table is created, a corresponding Phoenix table is also created. Once the Hive table is dropped, the Phoenix table is also deleted.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">create table phoenix_table (</div><div class="line">	  s1 string,</div><div class="line">	  i1 int,</div><div class="line">	  f1 float,</div><div class="line">	  d1 double</div><div class="line">	)</div><div class="line">	STORED BY &apos;org.apache.phoenix.hive.PhoenixStorageHandler&apos;</div><div class="line">	TBLPROPERTIES (</div><div class="line">	  &quot;phoenix.table.name&quot; = &quot;phoenix_table&quot;,</div><div class="line">	  &quot;phoenix.zookeeper.quorum&quot; = &quot;localhost&quot;,</div><div class="line">	  &quot;phoenix.zookeeper.znode.parent&quot; = &quot;/hbase&quot;,</div><div class="line">	  &quot;phoenix.zookeeper.client.port&quot; = &quot;2181&quot;,</div><div class="line">	  &quot;phoenix.rowkeys&quot; = &quot;s1, i1&quot;,</div><div class="line">	  &quot;phoenix.column.mapping&quot; = &quot;s1:s1, i1:i1, f1:f1, d1:d1&quot;,</div><div class="line">	  &quot;phoenix.table.options&quot; = &quot;SALT_BUCKETS=10, DATA_BLOCK_ENCODING=&apos;DIFF&apos;&quot;</div><div class="line">	);</div></pre></td></tr></table></figure></p>
 <p>Create EXTERNAL Table<br>For EXTERNAL tables, Hive works with an existing Phoenix table and manages only Hive metadata. Dropping an EXTERNAL table from Hive deletes only Hive metadata but does not delete the Phoenix table.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">create external table ext_table (</div><div class="line">  i1 int,</div><div class="line">  s1 string,</div><div class="line">  f1 float,</div><div class="line">  d1 decimal</div><div class="line">)</div><div class="line">STORED BY &apos;org.apache.phoenix.hive.PhoenixStorageHandler&apos;</div><div class="line">TBLPROPERTIES (</div><div class="line">  &quot;phoenix.table.name&quot; = &quot;ext_table&quot;,</div><div class="line">  &quot;phoenix.zookeeper.quorum&quot; = &quot;localhost&quot;,</div><div class="line">  &quot;phoenix.zookeeper.znode.parent&quot; = &quot;/hbase&quot;,</div><div class="line">  &quot;phoenix.zookeeper.client.port&quot; = &quot;2181&quot;,</div><div class="line">  &quot;phoenix.rowkeys&quot; = &quot;i1&quot;,</div><div class="line">  &quot;phoenix.column.mapping&quot; = &quot;i1:i1, s1:s1, f1:f1, d1:d1&quot;</div><div class="line">);</div></pre></td></tr></table></figure></p>
 <p>Properties</p>
@@ -464,7 +465,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">13</span>
+                <span class="site-state-item-count">12</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -475,7 +476,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-count">4</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

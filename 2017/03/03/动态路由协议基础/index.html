@@ -87,17 +87,29 @@
 
 
 
-<meta name="description" content="路由协议是路由器之间交互信息的一种语言，路由器之间通过路由协议共享网络状态和网络可达性的一些信息。路由器依靠动态路由协议来传播和收集路由选择信息。路由协议定义了一套路由器与邻接路由器通信时使用的规则。动态计算路由，适应网络变化，找出本地路由器到网络中其他网段的路由。">
+<meta name="description" content="路由协议是路由器之间交互信息的一种语言，路由器之间通过路由协议共享网络状态和网络可达性的一些信息。路由器依靠动态路由协议来传播和收集路由选择信息。路由协议定义了一套路由器与邻接路由器通信时使用的规则。动态计算路由，适应网络变化，找出本地路由器到网络中其他网段的路由。
+
+常见的动态路由协议：
+RIP：Routing Information Protocol,路由信息协议
+OSPF: Open s">
 <meta property="og:type" content="article">
 <meta property="og:title" content="动态路由协议基础">
 <meta property="og:url" content="http://www.linuxu.top/2017/03/03/动态路由协议基础/index.html">
 <meta property="og:site_name" content="linuxu's blog">
-<meta property="og:description" content="路由协议是路由器之间交互信息的一种语言，路由器之间通过路由协议共享网络状态和网络可达性的一些信息。路由器依靠动态路由协议来传播和收集路由选择信息。路由协议定义了一套路由器与邻接路由器通信时使用的规则。动态计算路由，适应网络变化，找出本地路由器到网络中其他网段的路由。">
+<meta property="og:description" content="路由协议是路由器之间交互信息的一种语言，路由器之间通过路由协议共享网络状态和网络可达性的一些信息。路由器依靠动态路由协议来传播和收集路由选择信息。路由协议定义了一套路由器与邻接路由器通信时使用的规则。动态计算路由，适应网络变化，找出本地路由器到网络中其他网段的路由。
+
+常见的动态路由协议：
+RIP：Routing Information Protocol,路由信息协议
+OSPF: Open s">
 <meta property="og:image" content="http://7pun1h.com1.z0.glb.clouddn.com/rlc1hnfciqu2f49a0k6wc87duz.png">
-<meta property="og:updated_time" content="2017-03-03T02:04:20.720Z">
+<meta property="og:updated_time" content="2018-03-31T13:21:04.638Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="动态路由协议基础">
-<meta name="twitter:description" content="路由协议是路由器之间交互信息的一种语言，路由器之间通过路由协议共享网络状态和网络可达性的一些信息。路由器依靠动态路由协议来传播和收集路由选择信息。路由协议定义了一套路由器与邻接路由器通信时使用的规则。动态计算路由，适应网络变化，找出本地路由器到网络中其他网段的路由。">
+<meta name="twitter:description" content="路由协议是路由器之间交互信息的一种语言，路由器之间通过路由协议共享网络状态和网络可达性的一些信息。路由器依靠动态路由协议来传播和收集路由选择信息。路由协议定义了一套路由器与邻接路由器通信时使用的规则。动态计算路由，适应网络变化，找出本地路由器到网络中其他网段的路由。
+
+常见的动态路由协议：
+RIP：Routing Information Protocol,路由信息协议
+OSPF: Open s">
 <meta name="twitter:image" content="http://7pun1h.com1.z0.glb.clouddn.com/rlc1hnfciqu2f49a0k6wc87duz.png">
 
 
@@ -335,10 +347,10 @@
       
 
       
-        <blockquote>
+        <a id="more"></a>
+<blockquote>
 <p>路由协议是路由器之间交互信息的一种语言，路由器之间通过路由协议共享网络状态和网络可达性的一些信息。路由器依靠动态路由协议来传播和收集路由选择信息。路由协议定义了一套路由器与邻接路由器通信时使用的规则。动态计算路由，适应网络变化，找出本地路由器到网络中其他网段的路由。</p>
 </blockquote>
-<a id="more"></a>
 <h4 id="常见的动态路由协议："><a href="#常见的动态路由协议：" class="headerlink" title="常见的动态路由协议："></a>常见的动态路由协议：</h4><ul>
 <li>RIP：Routing Information Protocol,路由信息协议</li>
 <li>OSPF: Open shortest Path First,开放式最短路径优先</li>
@@ -358,10 +370,10 @@
 <li>PIM-SM、PIM-DM</li>
 </ul>
 <h4 id="衡量动态路由协议的一些性能指标"><a href="#衡量动态路由协议的一些性能指标" class="headerlink" title="衡量动态路由协议的一些性能指标"></a>衡量动态路由协议的一些性能指标</h4><ul>
-<li>正确性<br>能够正确找到最优的路由，且无自环。</li>
-<li>快收敛<br>当网络的拓扑发生变化之后，能够迅速在自治系统中作相应的路由改变</li>
-<li>低开销<br>协议自身的开销（内存、cpu、网络带宽）最小</li>
-<li>安全性<br>协议自身不易受攻击，有安全机制。</li>
+<li>正确性<br> 能够正确找到最优的路由，且无自环。</li>
+<li>快收敛<br> 当网络的拓扑发生变化之后，能够迅速在自治系统中作相应的路由改变</li>
+<li>低开销<br> 协议自身的开销（内存、cpu、网络带宽）最小</li>
+<li>安全性<br> 协议自身不易受攻击，有安全机制。</li>
 <li>普适性<br>适应各种拓扑结构和规模的网络</li>
 </ul>
 
@@ -478,7 +490,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">13</span>
+                <span class="site-state-item-count">12</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -489,7 +501,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-count">4</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
